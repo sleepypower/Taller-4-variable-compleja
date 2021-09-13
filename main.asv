@@ -22,39 +22,17 @@ clc
 %end
 
 %% Prueba 2
-r = 10;%Radio
+alpha = 0:1:;
 
-theta = 0:pi/20:2*pi; 
-
-x = r*cos(theta);
-y = r*sin(theta);
-count=0;
-
-xs=[];
-ys=[];
-
-for i = 1:length(theta)-1    
-    if mod(i,4)==1
-        x1 = x(i) + 5*cos(theta);
-        y1 = y(i) + 5*sin(theta);
-        %plot(x1,y1)
-        %hold on
-        xs = [xs, x1];
-        ys = [ys, y1];
-        count = count+1;
-    end
-end
-
-
-
-z = xs + 1i*ys;
-%plot(xs, ys)
-x = xs
-y = ys
-
+r1 = 3
+r2 = 1
+k = r1/r2
+x = (r1 - r2)*cos(alpha) + r2*cos(alpha*(1-k));
+y = (r1 - r2)*sin(alpha) + r2*sin(alpha*(1-k));
+plot(x, y)
 
 %% Pasar a complejo
-%z = x + 1i*y;
+z = x + 1i*y;
 
 % Formula Plano Complejo -> Esfera de Riemann
 x1 = (2 .* x)./((abs(z).^2+1));
@@ -63,9 +41,9 @@ x3 = (abs(z).^2 - 1)./(abs(z).^2 + 1);
 
 % Plot sphere
 [x, y, z] = sphere;
-mesh(x,y,z, 'edgecolor', 'k')
+%mesh(x,y,z, 'edgecolor', 'k')
 hidden off
-hold on
+%hold on
 
 % Dibujar la curva en 3d
-plot3(x1, x2, x3)
+%plot3(x1, x2, x3)
