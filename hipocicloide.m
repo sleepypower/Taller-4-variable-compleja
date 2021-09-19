@@ -20,7 +20,7 @@ function z = hipocicloide(r1, r2, do_plot)
     x = (r1 - r2)*cos(alpha) + r2*cos(alpha*(1-k));
     y = (r1 - r2)*sin(alpha) + r2*sin(alpha*(1-k));
     if (do_plot)
-        plot(x, y)
+        %plot(x, y)
     end
     z = x + 1i*y;
 end
